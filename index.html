@@ -1,16 +1,445 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Sample HTML Page</title>
-</head>
-<body>
-    <h1>Welcome to the Sample HTML Page</h1>
-    <p>This is a simple HTML document used to demonstrate the structure of an HTML file.
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From Air Base to Urban Oasis: Kwun Tong Road History</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Palette: Vibrant & Energetic -->
+    <!-- Primary Blue: #2563EB (Royal Blue) -->
+    <!-- Secondary Orange: #F97316 (Bright Orange) -->
+    <!-- Accent Green: #10B981 (Emerald) -->
+    <!-- Text Dark: #1F2937 -->
+    
+    <!-- HTML Comment: PLAN SUMMARY
+    1.  **Narrative:** Follows the "vertical_timeline.md" structure, moving from Colonial Defence to Post-War Constraints, then to Modern Housing/Heritage.
+    2.  **Visualizations:**
+        * **Timeline:** Custom HTML/CSS vertical timeline (Goal: Change/Organize) with web-sourced historical images.
+        * **Bar Chart:** "The Kai Tak Ceiling" - Comparing building height limits (Goal: Compare).
+        * **Doughnut Chart:** "Time Share" - Military vs Civilian usage duration (Goal: Compare/Inform).
+    -->
 
+    <style>
+        /* Chart Container Styling Rules */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+
+        /* Timeline Custom Styles */
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background-color: #E5E7EB;
+            z-index: 0;
+        }
         
-    </p>
-    <img src="resources/hello.png" alt="Sample Image" />
+        .timeline-dot {
+            z-index: 10;
+        }
 
+        /* Mobile adjustment for timeline line */
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans leading-relaxed">
 
+    <!-- Header Section -->
+    <header class="bg-blue-700 text-white py-12 px-4 shadow-lg">
+        <div class="max-w-6xl mx-auto text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">From Air Base to Urban Oasis</h1>
+            <p class="text-xl md:text-2xl font-light text-blue-100">The Evolution of Kwun Tong Road & Kai Yip Estate</p>
+            <div class="mt-8 flex justify-center space-x-4">
+                <div class="flex items-center">
+                    <span class="text-3xl mr-2">✈️</span>
+                    <span class="text-sm font-bold uppercase tracking-wider">Military Past</span>
+                </div>
+                <div class="text-3xl text-blue-400">➜</div>
+                <div class="flex items-center">
+                    <span class="text-3xl mr-2">🏠</span>
+                    <span class="text-sm font-bold uppercase tracking-wider">Public Housing</span>
+                </div>
+            </div>
+        </div>
+    </header>
 
+    <!-- Main Content Grid -->
+    <main class="max-w-6xl mx-auto p-6 grid grid-cols-1 gap-12">
+
+        <!-- Introduction -->
+        <section class="bg-white rounded-xl shadow-md p-8 border-l-8 border-orange-500">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">A Landscape Transformed</h2>
+            <p class="text-lg text-gray-600">
+                The stretch of Kwun Tong Road near Kai Yip Estate is more than just a thoroughfare; it is a physical timeline of Hong Kong's 20th-century history. From the roar of Royal Air Force engines in the 1920s to the quiet study of art students today, this land has served the colony's defence, sheltered refugees, and now houses thousands of citizens.
+            </p>
+        </section>
+
+        <!-- Vertical Timeline Section -->
+        <section>
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-blue-800">The Kwun Tong Road Timeline</h2>
+                <p class="text-gray-500 mt-2">75 Years of Rapid Change</p>
+            </div>
+
+            <div class="relative wrap overflow-hidden p-4 h-full">
+                <!-- Vertical Line -->
+                <div class="timeline-line"></div>
+
+                <!-- 1927: RAF Base Established -->
+                <div class="mb-8 flex justify-between items-center w-full right-timeline flex-col md:flex-row">
+                    <div class="order-1 w-full md:w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-blue-600 shadow-xl w-10 h-10 rounded-full justify-center text-white font-bold timeline-dot">
+                        Start
+                    </div>
+                    <div class="order-1 bg-white rounded-lg shadow-xl w-full md:w-5/12 px-6 py-4 border-t-4 border-blue-600 mt-4 md:mt-0">
+                        <h3 class="mb-3 font-bold text-gray-800 text-xl">1927: RAF Base Established</h3>
+                        <p class="text-sm leading-snug tracking-wide text-gray-600 text-opacity-100 mb-3">
+                            The Royal Air Force (RAF) officially forms its station at the Eastern End of the Kai Tak Aerodrome, on land reclaimed from Kowloon Bay.
+                        </p>
+                        <!-- Image URL added in the previous step -->
+                        <img class="w-full max-h-48 object-cover rounded-md shadow-sm mb-2" 
+                             src="http://googleusercontent.com/image_collection/image_retrieval/16056352241104607028" 
+                             alt="Historical photo of RAF aircraft at Kai Tak in 1927"
+                             loading="lazy">
+                        <span class="text-xs text-blue-500 font-bold mt-2 block">🚩 The Colonial Era Begins</span>
+                    </div>
+                </div>
+
+                <!-- 1934: Historic Buildings Rise -->
+                <div class="mb-8 flex justify-between items-center w-full flex-col md:flex-row-reverse">
+                    <div class="order-1 w-full md:w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-blue-500 shadow-xl w-10 h-10 rounded-full justify-center text-white font-bold timeline-dot">
+                        '34
+                    </div>
+                    <div class="order-1 bg-white rounded-lg shadow-xl w-full md:w-5/12 px-6 py-4 border-t-4 border-blue-500 mt-4 md:mt-0">
+                        <h3 class="mb-3 font-bold text-gray-800 text-xl">1934: Historic Buildings Rise</h3>
+                        <p class="text-sm leading-snug tracking-wide text-gray-600 text-opacity-100 mb-3">
+                            Construction of the Officers' Quarters Compound and Mess (now HKBU Campus) on the hillside. Built in Colonial Neo-Classical style.
+                        </p>
+                        <!-- Placeholder image -->
+                        <img class="w-full max-h-48 object-cover rounded-md shadow-sm" 
+                             src="https://placehold.co/400x200/777777/ffffff?text=1934+Colonial+Building" 
+                             alt="HKBU Kai Tak Campus colonial building exterior"
+                             loading="lazy">
+                    </div>
+                </div>
+
+                <!-- 1941-1945: Japanese Occupation -->
+                <div class="mb-8 flex justify-between items-center w-full right-timeline flex-col md:flex-row">
+                    <div class="order-1 w-full md:w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-red-600 shadow-xl w-10 h-10 rounded-full justify-center text-white font-bold timeline-dot">
+                        War
+                    </div>
+                    <div class="order-1 bg-red-50 rounded-lg shadow-xl w-full md:w-5/12 px-6 py-4 border-t-4 border-red-600 mt-4 md:mt-0">
+                        <h3 class="mb-3 font-bold text-gray-800 text-xl">1941–1945: Japanese Occupation</h3>
+                        <p class="text-sm leading-snug tracking-wide text-gray-600 text-opacity-100">
+                            The base is seized and used by the Japanese Military during WWII. A dark period of conflict and trauma for the area.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 1950s-1970s: The Height Constraint -->
+                <div class="mb-8 flex justify-between items-center w-full flex-col md:flex-row-reverse">
+                    <div class="order-1 w-full md:w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-gray-600 shadow-xl w-10 h-10 rounded-full justify-center text-white font-bold timeline-dot">
+                        ✈️
+                    </div>
+                    <div class="order-1 bg-white rounded-lg shadow-xl w-full md:w-5/12 px-6 py-4 border-t-4 border-gray-600 mt-4 md:mt-0">
+                        <h3 class="mb-3 font-bold text-gray-800 text-xl">Post-1950s: The Height Constraint</h3>
+                        <p class="text-sm leading-snug tracking-wide text-gray-600 text-opacity-100">
+                            Strict height restrictions enforced across Kowloon to allow safe flight paths. Kwun Tong development is kept low-rise.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 1978-1979: Closure & Crisis -->
+                <div class="mb-8 flex justify-between items-center w-full right-timeline flex-col md:flex-row">
+                    <div class="order-1 w-full md:w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-orange-500 shadow-xl w-10 h-10 rounded-full justify-center text-white font-bold timeline-dot">
+                        🔄
+                    </div>
+                    <div class="order-1 bg-orange-50 rounded-lg shadow-xl w-full md:w-5/12 px-6 py-4 border-t-4 border-orange-500 mt-4 md:mt-0">
+                        <h3 class="mb-3 font-bold text-gray-800 text-xl">1978-79: Closure & Crisis</h3>
+                        <p class="text-sm leading-snug tracking-wide text-gray-600 text-opacity-100 mb-3">
+                            The RAF Base closes. The HQ building is immediately repurposed as the <strong>Kai Tak Vietnamese Refugee Camp</strong>.
+                        </p>
+                        <!-- Placeholder image -->
+                        <img class="w-full max-h-48 object-cover rounded-md shadow-sm" 
+                             src="https://placehold.co/400x200/999999/eeeeee?text=1979+Refugee+Camp" 
+                             alt="Historical photo of Kai Tak Refugee Camp"
+                             loading="lazy">
+                    </div>
+                </div>
+
+                <!-- 1981: Kai Yip Estate Opens -->
+                <div class="mb-8 flex justify-between items-center w-full flex-col md:flex-row-reverse">
+                    <div class="order-1 w-full md:w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-green-500 shadow-xl w-10 h-10 rounded-full justify-center text-white font-bold timeline-dot">
+                        🏠
+                    </div>
+                    <div class="order-1 bg-green-50 rounded-lg shadow-xl w-full md:w-5/12 px-6 py-4 border-t-4 border-green-500 mt-4 md:mt-0">
+                        <h3 class="mb-3 font-bold text-gray-800 text-xl">1981: Kai Yip Estate Opens</h3>
+                        <p class="text-sm leading-snug tracking-wide text-gray-600 text-opacity-100 mb-3">
+                            The main RAF maintenance area is transformed into public housing, providing homes for thousands.
+                        </p>
+                        <!-- Placeholder image -->
+                        <img class="w-full max-h-48 object-cover rounded-md shadow-sm" 
+                             src="https://placehold.co/400x200/333333/cccccc?text=1981+Kai+Yip+Estate" 
+                             alt="Historical photo of Kai Yip Estate"
+                             loading="lazy">
+                    </div>
+                </div>
+                
+                 <!-- 1998 - Present: Heritage & High-Rises -->
+                 <div class="mb-8 flex justify-between items-center w-full right-timeline flex-col md:flex-row">
+                    <div class="order-1 w-full md:w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-green-700 shadow-xl w-10 h-10 rounded-full justify-center text-white font-bold timeline-dot">
+                        Now
+                    </div>
+                    <div class="order-1 bg-white rounded-lg shadow-xl w-full md:w-5/12 px-6 py-4 border-t-4 border-green-700 mt-4 md:mt-0">
+                        <h3 class="mb-3 font-bold text-gray-800 text-xl">1998–Present: Heritage & High-Rises</h3>
+                        <p class="text-sm leading-snug tracking-wide text-gray-600 text-opacity-100">
+                            Airport closes (1998). Height limits lifted. Historic buildings preserved as HKBU Academy of Visual Arts (2001).
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Visualization Section: The Constraints & Eras -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- Chart 1: Era Duration -->
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Who Ruled the Land?</h3>
+                <p class="text-sm text-gray-500 mb-6">Proportion of time the site served different functions (1927–2025).</p>
+                <div class="chart-container">
+                    <canvas id="eraChart"></canvas>
+                </div>
+                <div class="mt-4 p-3 bg-blue-50 rounded text-sm text-blue-800">
+                    <strong>Insight:</strong> Despite the modern housing, the site spent over half the last century as a restricted military zone.
+                </div>
+            </div>
+
+            <!-- Chart 2: Height Restriction -->
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">The "Kai Tak Effect"</h3>
+                <p class="text-sm text-gray-500 mb-6">Impact of the airport flight path on Kwun Tong building heights.</p>
+                <div class="chart-container">
+                    <canvas id="heightChart"></canvas>
+                </div>
+                <div class="mt-4 p-3 bg-orange-50 rounded text-sm text-orange-800">
+                    <strong>Insight:</strong> The "Constraint Era" kept the skyline low. Once the airport moved in 1998, the skyline shot up.
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Process Flow Diagram: The Transformation of a Site -->
+        <section class="bg-white rounded-xl shadow-md p-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">Rapid Transformation: The Kai Yip Site</h3>
+            <p class="text-center text-gray-500 mb-8 max-w-2xl mx-auto">How one plot of reclaimed land changed identity three times in just 4 years (1978-1981).</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                <!-- Step 1: RAF Base -->
+                <div class="relative p-6 bg-blue-50 border-2 border-blue-200 rounded-lg">
+                    <div class="text-4xl mb-2">✈️</div>
+                    <h4 class="font-bold text-blue-900 text-lg">RAF Base</h4>
+                    <p class="text-sm text-blue-700">Maintenance & Barracks</p>
+                    <p class="text-xs text-gray-400 mt-2">Until 1978</p>
+                    <!-- Placeholder image -->
+                    <img class="w-full h-24 object-cover rounded-md shadow-sm mt-3" 
+                         src="https://placehold.co/300x100/555555/dddddd?text=RAF+Base" 
+                         alt="Historical photo of RAF Kai Tak"
+                         loading="lazy">
+                    <!-- Arrow for Desktop -->
+                    <div class="hidden md:block absolute top-1/2 -right-6 transform -translate-y-1/2 text-gray-300 text-4xl z-10">➜</div>
+                </div>
+
+                <!-- Step 2: Refugee Camp -->
+                <div class="relative p-6 bg-orange-50 border-2 border-orange-200 rounded-lg">
+                    <div class="text-4xl mb-2">⛺</div>
+                    <h4 class="font-bold text-orange-900 text-lg">Refugee Camp</h4>
+                    <p class="text-sm text-orange-700">Vietnamese Boat People</p>
+                    <p class="text-xs text-gray-400 mt-2">1979 - 1981</p>
+                    <!-- Placeholder image -->
+                    <img class="w-full h-24 object-cover rounded-md shadow-sm mt-3" 
+                         src="https://placehold.co/300x100/999999/eeeeee?text=Refugee+Camp" 
+                         alt="Historical photo of Refugee Camp"
+                         loading="lazy">
+                     <!-- Arrow for Desktop -->
+                     <div class="hidden md:block absolute top-1/2 -right-6 transform -translate-y-1/2 text-gray-300 text-4xl z-10">➜</div>
+                </div>
+
+                <!-- Step 3: Kai Yip Estate -->
+                <div class="p-6 bg-green-50 border-2 border-green-200 rounded-lg">
+                    <div class="text-4xl mb-2">🏢</div>
+                    <h4 class="font-bold text-green-900 text-lg">Kai Yip Estate</h4>
+                    <p class="text-sm text-green-700">Public Housing</p>
+                    <p class="text-xs text-gray-400 mt-2">1981 - Present</p>
+                    <!-- Placeholder image -->
+                    <img class="w-full h-24 object-cover rounded-md shadow-sm mt-3" 
+                         src="https://placehold.co/300x100/333333/cccccc?text=Kai+Yip+Estate" 
+                         alt="Historical photo of Kai Yip Estate"
+                         loading="lazy">
+                </div>
+            </div>
+            
+            <!-- Arrow for Mobile (Vertical Flow) -->
+            <div class="md:hidden text-center text-gray-300 text-3xl my-2">⬇️</div>
+        </section>
+
+        <footer class="text-center py-8 text-gray-400 text-sm">
+            <p>Generated for History Lesson: "Learning Hong Kong History by Walking around our Neighbourhood"</p>
+        </footer>
+
+    </main>
+
+    <script>
+        // --- DATA PREPARATION ---
+        
+        // 1. Label Wrapping Helper
+        const wrapLabel = (str, maxLen) => {
+            if (str.length <= maxLen) return str;
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + 1 + words[i].length <= maxLen) {
+                    currentLine += ' ' + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        };
+
+        // 2. Common Tooltip Callback for Multiline Labels
+        const tooltipTitleCallback = function(tooltipItems) {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            } else {
+                return label;
+            }
+        };
+
+        // --- CHART GENERATION ---
+
+        // CHART 1: ERA DURATION (Doughnut)
+        const ctxEra = document.getElementById('eraChart').getContext('2d');
+        // Labels needs wrapping? Not really, they are short, but good practice.
+        const eraLabels = ['Military Era (RAF)', 'Transitional (Refugee)', 'Civilian (Housing/Edu)'];
+        const eraData = [51, 3, 44]; // Years: 1927-1978, 1978-1981, 1981-2025
+
+        new Chart(ctxEra, {
+            type: 'doughnut',
+            data: {
+                labels: eraLabels,
+                datasets: [{
+                    data: eraData,
+                    backgroundColor: [
+                        '#2563EB', // Blue for Military
+                        '#F97316', // Orange for Crisis/Transition
+                        '#10B981'  // Green for Civilian
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback,
+                            label: function(context) {
+                                return ` ${context.label}: ${context.raw} Years`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // CHART 2: HEIGHT RESTRICTION (Bar)
+        const ctxHeight = document.getElementById('heightChart').getContext('2d');
+        const heightLabelsRaw = ['Pre-1998 (Airport Era)', 'Post-1998 (Modern Era)'];
+        const heightLabels = heightLabelsRaw.map(l => wrapLabel(l, 16));
+        
+        // Data: Approx storeys for visual comparison. 
+        // Pre-98: ~13-15 storeys (approx 45m). Post-98: 40+ storeys (approx 120-150m)
+        const heightData = [15, 45]; 
+
+        new Chart(ctxHeight, {
+            type: 'bar',
+            data: {
+                labels: heightLabels,
+                datasets: [{
+                    label: 'Approximate Storeys',
+                    data: heightData,
+                    backgroundColor: [
+                        '#9CA3AF', // Gray for constrained
+                        '#2563EB'  // Blue for unleashed
+                    ],
+                    borderRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Building Height (Storeys)'
+                        }
+                    }
+                }
+            }
+        });
+
+    </script>
 </body>
 </html>
